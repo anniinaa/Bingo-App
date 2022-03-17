@@ -1,3 +1,59 @@
+.App-container {
+  text-align: center;
+  margin: 250px auto;
+}
+.login-button {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  padding: 10px 25px;
+  background-color: rgb(70, 124, 175);
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+.login-button:hover {
+  opacity: 0.6;
+}
+.welcome {
+  font-family: "Roboto Slab", serif;
+}
+button {
+  cursor: pointer;
+}
+/* header */
+
+.welcome-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 50px;
+}
 .welcome-text {
   font-family: "Roboto Slab", serif;
+  margin-right: 50px;
+}
+
+.userPhoto {
+  border-radius: 50px;
+}
+.signout-button {
+  margin: 20px 30px;
+  padding: 5px;
+  background-color: rgb(70, 124, 175);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+.signout-button:hover {
+  opacity: 0.6;
+}
+
+/* bingo content */
+
+.bingo-container {
+  justify-content: center;
+  margin: auto;
+  border: 1px black solid;
+  width: 700px;
 }

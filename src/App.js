@@ -21,17 +21,29 @@ function App() {
         console.log(err.message);
       });
   };
+
+  const logout = () => {
+    setUser({});
+  };
+
   return (
-    <div className="App-container">
+    <div>
       {!user.email && (
-        <button className="login-button" onClick={signInWithGoogle}>
-          Login with Google
-        </button>
+        <div className="App-container">
+          <h2 className="welcome">Welcome</h2>
+          <button className="login-button" onClick={signInWithGoogle}>
+            Login with Google
+          </button>
+        </div>
       )}
       {user.email && (
         <div>
-          <UserWelcome photo={user.photoURL} userName={user.displayName} />
-          <Bingo />
+          <UserWelcome
+            logout={logout}
+            photo={user.photoURL}
+            userName={user.displayName}
+          />
+          <Bingo user={user} />
         </div>
       )}
     </div>
