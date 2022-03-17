@@ -37,6 +37,7 @@ button {
   border-radius: 50px;
 }
 .signout-button {
+  font-family: "Roboto", sans-serif;
   margin: 20px 30px;
   padding: 5px;
   background-color: rgb(70, 124, 175);
