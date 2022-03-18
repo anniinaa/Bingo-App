@@ -1,6 +1,9 @@
 .App-container {
   text-align: center;
   margin: 250px auto;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
 }
 .login-button {
   font-family: "Roboto", sans-serif;
@@ -17,20 +20,35 @@
 .welcome {
   font-family: "Roboto Slab", serif;
 }
+
 button {
   cursor: pointer;
 }
 /* header */
+.flex-container-welcome {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 .welcome-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   margin-bottom: 50px;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+}
+.logo {
+  width: 120px;
+  margin-right: 25px;
 }
 .welcome-text {
   font-family: "Roboto Slab", serif;
-  margin-right: 50px;
+  font-size: 30px;
+  margin-right: 20px;
 }
 
 .userPhoto {
@@ -38,8 +56,11 @@ button {
 }
 .signout-button {
   font-family: "Roboto", sans-serif;
-  margin: 20px 30px;
   padding: 5px;
+  width: 90px;
+  height: 40px;
+  margin-left: 25px;
+  margin: auto 0 auto 25px;
   background-color: rgb(70, 124, 175);
   border-radius: 5px;
   border: none;
@@ -55,6 +76,66 @@ button {
 .bingo-container {
   justify-content: center;
   margin: auto;
-  border: 1px black solid;
   width: 700px;
+}
+.bingo-wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, auto);
+}
+.bingo-button {
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  width: 100px;
+  height: 70px;
+  background-color: rgb(84, 75, 109);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+.bingo-button:hover {
+  background-color: rgba(16, 94, 26, 0.753);
+  transform: scale(1.09);
+  transition-duration: 0.5s;
+}
+.random-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto 35px auto;
+}
+.random-character {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  margin-left: 25px;
+}
+.randombuttom-start {
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+  background-color: rgb(88, 151, 107);
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+.randombuttom-start:hover {
+  transform: scale(1.09);
+  transition-duration: 0.5s;
+}
+.randombuttom-next {
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+  background-color: rgb(88, 151, 107);
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+.randombuttom-next:hover {
+  transform: scale(1.09);
+  transition-duration: 0.5s;
 }
