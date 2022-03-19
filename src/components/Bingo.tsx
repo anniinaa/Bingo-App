@@ -13,8 +13,6 @@ export const Bingo = ({ user }) => {
     .slice(0, 25)
     .reduce((data, value, index) => ({ ...data, [index]: value }), {});
 
-  console.log("data", data);
-
   const randomCharacter = () => {
     let random = characters[Math.floor(Math.random() * characters.length)];
     setRandom(random);
