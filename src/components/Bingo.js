@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 
 import characters from "../bingoTableNames";
-import shuffle from "shuffle-array";
 
-export const Bingo = ({ user }) => {
+export const Bingo = ({ winnerRow, bingoTableData }) => {
   const [checked, setChecked] = useState([]);
-  const [disabled, setDisabled] = useState(false);
 
+  const [disabled, setDisabled] = useState(false);
   const [random, setRandom] = useState("");
 
-  const data = shuffle(characters)
-    .slice(0, 25)
-    .reduce((data, value, index) => ({ ...data, [index]: value }), {});
+  const [randomArray, setRandomArray] = useState([]);
 
   const randomCharacter = () => {
     let random = characters[Math.floor(Math.random() * characters.length)];
     setRandom(random);
+    setRandomArray((oldArray) => [...oldArray, random]);
   };
 
   const selectedButton = (e) => {
@@ -44,7 +42,7 @@ export const Bingo = ({ user }) => {
         <h4 className="random-character">{random}</h4>
       </div>
       <div className="bingo-wrapper">
-        {Object.keys(data).map((id) => (
+        {Object.keys(bingoTableData).map((id) => (
           <button
             className="bingo-button"
             key={id}
@@ -52,8 +50,14 @@ export const Bingo = ({ user }) => {
             onClick={selectedButton}
             disabled={disabled}
           >
-            {data[id]}
+            {bingoTableData[id]}
           </button>
+        ))}
+      </div>
+      {random ? <h2 className="characters-heading">Character list: </h2> : null}
+      <div className="char-list">
+        {randomArray.map((char) => (
+          <li className="char-item">{char} /</li>
         ))}
       </div>
     </div>
