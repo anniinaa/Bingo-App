@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import characters from "../bingoNumbers";
+import characters from "../bingoTableNames";
 import shuffle from "shuffle-array";
 
 export const Bingo = ({ user }) => {

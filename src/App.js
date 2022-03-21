@@ -4,7 +4,7 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import shuffle from "shuffle-array";
 
 import "./App.css";
-import characters from "./bingoNumbers";
+import characters from "./bingoTableNames";
 
 import { Bingo } from "./components/Bingo";
 import { UserWelcome } from "./components/UserWelcome";
