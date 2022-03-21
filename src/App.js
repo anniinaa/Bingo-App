@@ -13,6 +13,7 @@ const provider = new GoogleAuthProvider();
 
 function App() {
   const [user, setUser] = useState({});
+  const [bingoTableData, setBingoTableData] = useState({});
   const [winnerRow, setwinnerRow] = useState([]);
 
   useEffect(() => {
@@ -21,6 +22,12 @@ function App() {
       setwinnerRow(winnerRow);
       console.log("winnerRow", winnerRow);
     }
+
+    const data = shuffle(characters)
+      .slice(0, 25)
+      .reduce((data, value, index) => ({ ...data, [index]: value }), {});
+
+    setBingoTableData(data);
   }, [user]); //RIITTÄÄKÖ TÄÄ AUTHENTICATION TÄHÄN????
 
   const signInWithGoogle = () => {
@@ -55,7 +62,11 @@ function App() {
             photo={user.photoURL}
             userName={user.displayName}
           />
-          <Bingo winnerRow={winnerRow} user={user} />
+          <Bingo
+            bingoTableData={bingoTableData}
+            winnerRow={winnerRow}
+            user={user}
+          />
         </div>
       )}
     </div>

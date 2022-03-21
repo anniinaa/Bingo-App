@@ -139,3 +139,22 @@ button {
   transform: scale(1.09);
   transition-duration: 0.5s;
 }
+.characters-heading {
+  font-family: "Roboto", sans-serif;
+  color: rgb(118, 155, 155);
+  font-size: 16px;
+  margin-top: 15px;
+}
+.char-list {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  flex-wrap: wrap;
+  font-family: "Roboto", sans-serif;
+  color: rgb(118, 155, 155);
+  width: 100%;
+}
+.char-item {
+  list-style: none;
+  margin-right: 5px;
+}
