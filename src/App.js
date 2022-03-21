@@ -15,6 +15,14 @@ function App() {
   const [user, setUser] = useState({});
   const [winnerRow, setwinnerRow] = useState([]);
 
+  useEffect(() => {
+    if (user.accessToken) {
+      const winnerRow = shuffle(characters).slice(0, 5);
+      setwinnerRow(winnerRow);
+      console.log("winnerRow", winnerRow);
+    }
+  }, [user]); //RIITTÄÄKÖ TÄÄ AUTHENTICATION TÄHÄN????
+
   const signInWithGoogle = () => {
     signInWithPopup(authentication, provider)
       .then((result) => {
@@ -24,10 +32,6 @@ function App() {
       .catch((err) => {
         console.log(err.message);
       });
-
-    const winnerRow = shuffle(characters).slice(0, 5);
-    setwinnerRow(winnerRow);
-    console.log("winnerRow", winnerRow);
   };
 
   const logout = () => {
