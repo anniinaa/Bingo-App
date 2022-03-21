@@ -18,8 +18,12 @@ export const Bingo = ({ winnerRow, bingoTableData }) => {
 
   const selectedButton = (e) => {
     e.preventDefault();
+    setChecked((oldArr) => [...oldArr, e.target.value]);
     e.target.style.backgroundColor = "rgba(16, 94, 26, 0.219)";
   };
+
+  console.log("randomArray", randomArray);
+  console.log("checked", checked);
 
   return (
     <div className="bingo-container">
@@ -49,6 +53,7 @@ export const Bingo = ({ winnerRow, bingoTableData }) => {
             id={id}
             onClick={selectedButton}
             disabled={disabled}
+            value={bingoTableData[id]}
           >
             {bingoTableData[id]}
           </button>
