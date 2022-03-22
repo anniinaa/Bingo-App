@@ -2,12 +2,10 @@ import React, { useState } from "react";
 
 import characters from "../bingoTableNames";
 
-export const Bingo = ({ winnerRow, bingoTableData }) => {
+export const Bingo = ({ bingoTableData }) => {
   const [checked, setChecked] = useState([]);
-
   const [disabled, setDisabled] = useState(false);
   const [random, setRandom] = useState("");
-
   const [randomArray, setRandomArray] = useState([]);
 
   const randomCharacter = () => {
@@ -18,9 +16,18 @@ export const Bingo = ({ winnerRow, bingoTableData }) => {
 
   const selectedButton = (e) => {
     e.preventDefault();
-    setChecked((oldArr) => [...oldArr, e.target.value]);
+
+    if (e.target.value !== checked.value) {
+      setChecked((oldArr) => [...oldArr, e.target.value]);
+    }
+
     e.target.style.backgroundColor = "rgba(16, 94, 26, 0.219)";
   };
+
+  // disable button kun klikattu? tallentaa saman nimen kokoajan udestaan array
+  //vahingossa klikattu saa myös poistettua arraysta
+  // voittologiikka 5 rivissä
+  //
 
   console.log("randomArray", randomArray);
   console.log("checked", checked);
