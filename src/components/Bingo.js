@@ -41,11 +41,11 @@ export const Bingo = ({ bingoTableData }) => {
   };
 
   // disable button kun klikattu? tallentaa saman nimen kokoajan udestaan array
-  //vahingossa klikattu saa myös poistettua arraysta
+  // vahingossa klikattu saa myös poistettua arraysta
   // voittologiikka 5 rivissä
+  // voitto kertojen tallennus firestoreen
 
-  //  TULEE SAMAT NIMER RANDOM NAPISTA ?
-  //  EI SUFFLE UUDESTAAN
+  //  TULEE SAMAT NIMET RANDOM NAPISTA ?
 
   return (
     <div className="bingo-container">
@@ -67,7 +67,7 @@ export const Bingo = ({ bingoTableData }) => {
               key={id}
               id={id}
               onClick={selectedButton}
-              disabled={hasWon}
+              disabled={hasWon || !random}
               value={data[id]}
               style={!random ? { backgroundColor: "rgb(84, 75, 109)" } : {}} // VOIKO NÄIN LAITTAA?????
             >
