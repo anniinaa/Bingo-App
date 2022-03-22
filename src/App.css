@@ -148,6 +148,12 @@ button {
   font-size: 16px;
   margin-top: 15px;
 }
+.wons-heading {
+  font-family: "Roboto", sans-serif;
+  color: rgb(21, 156, 156);
+  font-size: 16px;
+  margin-top: 15px;
+}
 .char-list {
   display: flex;
   flex-direction: row;

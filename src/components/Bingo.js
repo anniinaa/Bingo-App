@@ -17,6 +17,8 @@ export const Bingo = ({ bingoTableData, mapDataToTable }) => {
   const [data, setData] = useState(bingoTableData);
   const [hasWon, setHasWon] = useState(false);
 
+  const [winCount, setWincount] = useState(0);
+
   const arrayContainsElements = (arrays, filteredArray) => {
     const results = arrays.map((x) =>
       x.every((x) => filteredArray.map((x) => x.index).includes(x))
@@ -70,6 +72,7 @@ export const Bingo = ({ bingoTableData, mapDataToTable }) => {
 
     if (checkIfWon([...filtered, current]) === true) {
       setHasWon(true);
+      setWincount(winCount + 1);
     }
   };
 
@@ -95,30 +98,35 @@ export const Bingo = ({ bingoTableData, mapDataToTable }) => {
           Congratulations! Please reset the game.{" "}
         </h3>
       ) : (
-        <div className="bingo-wrapper">
-          {data
-            ?.sort((a, b) => (a.index < b.index ? -1 : 1))
-            .map((char) => (
-              <button
-                className="bingo-button"
-                key={char.index}
-                id={char.index}
-                onClick={() => selectedButton(char.index)}
-                disabled={hasWon}
-                value={char.name}
-                style={
-                  !char.selected
-                    ? { backgroundColor: "rgb(84, 75, 109)" }
-                    : { backgroundColor: "rgba(16, 94, 26, 0.219)" }
-                }
-              >
-                {char.name}
-              </button>
-            ))}
-        </div>
+        <>
+          <div className="bingo-wrapper">
+            {data
+              ?.sort((a, b) => (a.index < b.index ? -1 : 1))
+              .map((char) => (
+                <button
+                  className="bingo-button"
+                  key={char.index}
+                  id={char.index}
+                  onClick={() => selectedButton(char.index)}
+                  disabled={hasWon}
+                  value={char.name}
+                  style={
+                    !char.selected
+                      ? { backgroundColor: "rgb(84, 75, 109)" }
+                      : { backgroundColor: "rgba(16, 94, 26, 0.219)" }
+                  }
+                >
+                  {char.name}
+                </button>
+              ))}
+          </div>
+          <h2 className="wons-heading">Previous wins: {winCount}</h2>
+          {random ? (
+            <h2 className="characters-heading">Character list: </h2>
+          ) : null}
+          <SelectedCharacters randomArray={randomArray} />
+        </>
       )}
-      {random ? <h2 className="characters-heading">Character list: </h2> : null}
-      <SelectedCharacters randomArray={randomArray} />
     </div>
   );
 };
