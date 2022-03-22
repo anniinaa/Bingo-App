@@ -5,16 +5,26 @@ import characters from "../bingoTableNames";
 import { RandomButton } from "./RandomButton";
 import { SelectedCharacters } from "./SelectedCharacters";
 
+const newRandom = (currentRandomArray, allCharacters) => {
+  const array = allCharacters.filter((x) => !currentRandomArray.includes(x));
+  const random = array[Math.floor(Math.random() * array.length)];
+
+  return random;
+};
+
 export const Bingo = ({ bingoTableData }) => {
   const [checked, setChecked] = useState([]);
   const [random, setRandom] = useState("");
   const [randomArray, setRandomArray] = useState([]);
   const [data, setData] = useState(bingoTableData);
-
   const [hasWon, setHasWon] = useState(false);
 
   const randomCharacter = () => {
-    let random = characters[Math.floor(Math.random() * characters.length)];
+    if (randomArray.length >= characters.length) {
+      return;
+    }
+    const random = newRandom(randomArray, characters);
+
     setRandom(random);
     setRandomArray((oldArr) => [...oldArr, random]);
   };
@@ -38,10 +48,13 @@ export const Bingo = ({ bingoTableData }) => {
     setHasWon(false);
   };
 
+  console.log("randomArray", randomArray);
+  console.log("checked", checked);
+
+  const WinnerLineCount = () => {};
+
   // disable button kun klikattu? tallentaa saman nimen kokoajan udestaan array
   // vahingossa klikattu saa myös poistettua arraysta
-
-  //  TULEE SAMAT NIMET RANDOM NAPISTA ?
 
   // voittologiikka 5 rivissä
   // voitto kertojen tallennus firestoreen

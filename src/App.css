@@ -161,6 +161,10 @@ button {
   list-style: none;
   margin-right: 5px;
 }
+.reset-button-container {
+  justify-content: center;
+  margin: auto 0 auto;
+}
 .reset-button {
   font-family: "Roboto", sans-serif;
   padding: 5px;

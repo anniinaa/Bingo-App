@@ -26,7 +26,7 @@ export const RandomButton = ({
         </button>
       )}
       <h4 className="random-character">{random}</h4>
-      <div>
+      <div className="reset-button-container">
         {random || hasWon ? (
           <button className="reset-button" onClick={resetGame}>
             reset game
