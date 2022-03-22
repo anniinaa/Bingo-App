@@ -24,9 +24,8 @@ export const Bingo = ({ bingoTableData }) => {
 
     if (e.target.value !== checked.value) {
       setChecked((oldArr) => [...oldArr, e.target.value]);
+      e.target.style.backgroundColor = "rgba(16, 94, 26, 0.219)";
     }
-
-    e.target.style.backgroundColor = "rgba(16, 94, 26, 0.219)";
   };
 
   const resetGame = () => {
