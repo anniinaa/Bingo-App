@@ -11,12 +11,23 @@ import { UserWelcome } from "./components/UserWelcome";
 
 const provider = new GoogleAuthProvider();
 
+const mapDataToTable = (allCharacters) => {
+  const data = shuffle(allCharacters).slice(0, 25);
+
+  const tableData = data.map((x, i) => ({
+    name: x,
+    index: i,
+    selected: false,
+  }));
+  return tableData;
+};
+
 function App() {
   const [user, setUser] = useState({});
-  const [bingoTableData, setBingoTableData] = useState({});
+  const [bingoTableData, setBingoTableData] = useState([]);
 
   useEffect(() => {
-    const data = shuffle(characters).slice(0, 25);
+    const data = mapDataToTable(characters);
 
     setBingoTableData(data);
   }, [user]);
@@ -53,7 +64,11 @@ function App() {
             photo={user.photoURL}
             userName={user.displayName}
           />
-          <Bingo bingoTableData={bingoTableData} user={user} />
+          <Bingo
+            mapDataToTable={mapDataToTable}
+            bingoTableData={bingoTableData}
+            user={user}
+          />
         </div>
       )}
     </div>
