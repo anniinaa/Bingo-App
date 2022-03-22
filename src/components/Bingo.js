@@ -29,9 +29,8 @@ export const Bingo = ({ bingoTableData }) => {
   };
 
   const resetGame = () => {
-    const newData = shuffle(characters)
-      .slice(0, 25)
-      .reduce((data, value, index) => ({ ...data, [index]: value }), {});
+    const newData = shuffle(characters).slice(0, 25);
+
     setData(newData);
     setRandomArray([]);
     setChecked([]);
@@ -41,10 +40,11 @@ export const Bingo = ({ bingoTableData }) => {
 
   // disable button kun klikattu? tallentaa saman nimen kokoajan udestaan array
   // vahingossa klikattu saa myös poistettua arraysta
-  // voittologiikka 5 rivissä
-  // voitto kertojen tallennus firestoreen
 
   //  TULEE SAMAT NIMET RANDOM NAPISTA ?
+
+  // voittologiikka 5 rivissä
+  // voitto kertojen tallennus firestoreen
 
   return (
     <div className="bingo-container">
@@ -56,21 +56,21 @@ export const Bingo = ({ bingoTableData }) => {
       />
       {hasWon ? (
         <h3 className="haswon-header">
-          Concratulations! Please reset the game.{" "}
+          Congratulations! Please reset the game.{" "}
         </h3>
       ) : (
         <div className="bingo-wrapper">
-          {Object.keys(data).map((id) => (
+          {data.map((char, id) => (
             <button
               className="bingo-button"
               key={id}
               id={id}
               onClick={selectedButton}
               disabled={hasWon || !random}
-              value={data[id]}
-              style={!random ? { backgroundColor: "rgb(84, 75, 109)" } : {}} // VOIKO NÄIN LAITTAA?????
+              value={char}
+              style={!random ? { backgroundColor: "rgb(84, 75, 109)" } : {}}
             >
-              {data[id]}
+              {char}
             </button>
           ))}
         </div>
