@@ -14,14 +14,14 @@ const provider = new GoogleAuthProvider();
 function App() {
   const [user, setUser] = useState({});
   const [bingoTableData, setBingoTableData] = useState({});
-  const [winnerRow, setwinnerRow] = useState([]);
+  // const [winnerRow, setwinnerRow] = useState([]);
 
   useEffect(() => {
-    if (user.accessToken) {
-      const winnerRow = shuffle(characters).slice(0, 5);
-      setwinnerRow(winnerRow);
-      console.log("winnerRow", winnerRow);
-    }
+    // if (user.accessToken) {
+    //   const winnerRow = shuffle(characters).slice(0, 5);
+    //   setwinnerRow(winnerRow);
+    //   console.log("winnerRow", winnerRow);
+    // }
 
     const data = shuffle(characters)
       .slice(0, 25)
@@ -62,11 +62,7 @@ function App() {
             photo={user.photoURL}
             userName={user.displayName}
           />
-          <Bingo
-            bingoTableData={bingoTableData}
-            winnerRow={winnerRow}
-            user={user}
-          />
+          <Bingo bingoTableData={bingoTableData} user={user} />
         </div>
       )}
     </div>
