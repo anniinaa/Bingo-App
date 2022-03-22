@@ -99,10 +99,13 @@ button {
   transform: scale(1.09);
   transition-duration: 0.5s;
 }
+/* random content */
+
 .random-container {
   display: flex;
   flex-direction: row;
-  margin: 0 auto 35px auto;
+  justify-content: space-between;
+  margin: 0 0 35px 0;
 }
 .random-character {
   font-family: "Roboto", sans-serif;
@@ -157,4 +160,24 @@ button {
 .char-item {
   list-style: none;
   margin-right: 5px;
+}
+.reset-button {
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  margin-right: 35px;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(216, 176, 44, 0.815);
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 12px;
+}
+/* Winner content */
+.haswon-header {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  color: rgb(88, 151, 107);
+  font-size: 25px;
+  margin: 0 0 15px;
 }
