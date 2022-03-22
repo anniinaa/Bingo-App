@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import shuffle from "shuffle-array";
 
 import characters from "../bingoTableNames";
 import { RandomButton } from "./RandomButton";
@@ -8,6 +9,7 @@ export const Bingo = ({ bingoTableData }) => {
   const [checked, setChecked] = useState([]);
   const [random, setRandom] = useState("");
   const [randomArray, setRandomArray] = useState([]);
+  const [data, setData] = useState(bingoTableData);
 
   const [hasWon, setHasWon] = useState(false);
 
@@ -28,6 +30,10 @@ export const Bingo = ({ bingoTableData }) => {
   };
 
   const resetGame = () => {
+    const newData = shuffle(characters)
+      .slice(0, 25)
+      .reduce((data, value, index) => ({ ...data, [index]: value }), {});
+    setData(newData);
     setRandomArray([]);
     setChecked([]);
     setRandom("");
@@ -37,7 +43,9 @@ export const Bingo = ({ bingoTableData }) => {
   // disable button kun klikattu? tallentaa saman nimen kokoajan udestaan array
   //vahingossa klikattu saa myös poistettua arraysta
   // voittologiikka 5 rivissä
-  //
+
+  //  TULEE SAMAT NIMER RANDOM NAPISTA ?
+  //  EI SUFFLE UUDESTAAN
 
   return (
     <div className="bingo-container">
@@ -53,17 +61,17 @@ export const Bingo = ({ bingoTableData }) => {
         </h3>
       ) : (
         <div className="bingo-wrapper">
-          {Object.keys(bingoTableData).map((id) => (
+          {Object.keys(data).map((id) => (
             <button
               className="bingo-button"
               key={id}
               id={id}
               onClick={selectedButton}
               disabled={hasWon}
-              value={bingoTableData[id]}
+              value={data[id]}
               style={!random ? { backgroundColor: "rgb(84, 75, 109)" } : {}} // VOIKO NÄIN LAITTAA?????
             >
-              {bingoTableData[id]}
+              {data[id]}
             </button>
           ))}
         </div>
