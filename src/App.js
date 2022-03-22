@@ -14,21 +14,12 @@ const provider = new GoogleAuthProvider();
 function App() {
   const [user, setUser] = useState({});
   const [bingoTableData, setBingoTableData] = useState({});
-  // const [winnerRow, setwinnerRow] = useState([]);
 
   useEffect(() => {
-    // if (user.accessToken) {
-    //   const winnerRow = shuffle(characters).slice(0, 5);
-    //   setwinnerRow(winnerRow);
-    //   console.log("winnerRow", winnerRow);
-    // }
-
-    const data = shuffle(characters)
-      .slice(0, 25)
-      .reduce((data, value, index) => ({ ...data, [index]: value }), {});
+    const data = shuffle(characters).slice(0, 25);
 
     setBingoTableData(data);
-  }, [user]); //RIITTÄÄKÖ TÄÄ AUTHENTICATION TÄHÄN????
+  }, [user]);
 
   const signInWithGoogle = () => {
     signInWithPopup(authentication, provider)
