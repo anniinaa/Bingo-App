@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import characters from "../bingoTableNames";
+
 import { RandomButton } from "./RandomButton";
 import { SelectedCharacters } from "./SelectedCharacters";
 
@@ -11,12 +12,11 @@ const newRandom = (currentRandomArray, allCharacters) => {
   return random;
 };
 
-export const Bingo = ({ bingoTableData, mapDataToTable }) => {
+export const Bingo = ({ bingoTableData, mapDataToTable, wins, setWins }) => {
   const [random, setRandom] = useState("");
   const [randomArray, setRandomArray] = useState([]);
   const [data, setData] = useState(bingoTableData);
   const [hasWon, setHasWon] = useState(false);
-
   const [winCount, setWincount] = useState(0);
 
   const arrayContainsElements = (arrays, filteredArray) => {
