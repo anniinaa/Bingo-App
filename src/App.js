@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { authentication } from "./firebase-confiq";
+import { db, authentication } from "./firebase-confiq";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { collection, onSnapshot } from "firebase/firestore";
 import shuffle from "shuffle-array";
 
 import "./App.css";
@@ -25,10 +26,16 @@ const mapDataToTable = (allCharacters) => {
 function App() {
   const [user, setUser] = useState({});
   const [bingoTableData, setBingoTableData] = useState([]);
+  const [wins, setWins] = useState([]);
 
   useEffect(() => {
-    const data = mapDataToTable(characters);
+    onSnapshot(collection(db, "UserInfo"), (snapshot) =>
+      setWins(snapshot.docs.map((doc) => doc.data()))
+    );
 
+    // fetch the right data with wins[0].wins
+
+    const data = mapDataToTable(characters);
     setBingoTableData(data);
   }, [user]);
 
@@ -42,7 +49,6 @@ function App() {
         console.log(err.message);
       });
   };
-
   const logout = () => {
     setUser({});
   };
