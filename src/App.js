@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { db, authentication } from "./components/firebase/firebase-confiq";
+import { db, authentication } from "./firebase/firebase-confiq";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { collection, onSnapshot } from "firebase/firestore";
 import shuffle from "shuffle-array";
