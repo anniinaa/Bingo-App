@@ -1,4 +1,4 @@
-Bingo Application
+Harry Potter Bingo App !
 
 React project with JavaScript and Firebase 
 
